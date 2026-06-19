@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site PluziStyle</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+      <header>
+        <div class="header2">
+          <h1 id="saudacao" data-i18n="saudacao">Olá!</h1>
+        </div>
+        <button id="btnTema" title="Alternar tema">🌙</button>
+    <nav>
+      <div id="barraBuscaPrincipal" class="search">
+        <label for="searchInput">
+          <span class="material-symbols-outlined"> search </span>
+        </label>
+        <input type="text" id="searchInput" data-i18n-placeholder="placeholder-busca" placeholder="Pesquisar na PluziStyle">
+        <svg id="iconeFiltro" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"/>
+        </svg>
+        <div id="filtroBox" class="filtro-hidden">
+          <button id="limparFiltros" data-i18n="filtro-limpar">Limpar filtros</button>
+          <div class="preco-filtro">
+            <p id="filtroAtivo"></p>
+            <h3 data-i18n="filtro-preco-titulo">Preço</h3>
+            <p class="filtro-preco" data-preco="120-250">120 - 250</p>
+            <p class="filtro-preco" data-preco="120-180">120 - 180</p>
+            <p class="filtro-preco" data-preco="180-250">180 - 250</p>
+          </div>
+          <div class="categoria">
+            <h3 data-i18n="filtro-categoria-titulo">Categoria</h3>
+            <p class="filtro-cat" data-cat="todos" data-i18n="filtro-cat-todos">Todos os produtos</p>
+            <p class="filtro-cat" data-cat="camisa" data-i18n="nav-camisa">Camisa</p>
+            <p class="filtro-cat" data-cat="calca" data-i18n="nav-calca">Calça</p>
+            <p class="filtro-cat" data-cat="conjunto" data-i18n="nav-conjunto">Conjunto</p>
+            <p class="filtro-cat" data-cat="macacao" data-i18n="nav-macacao">Macacão</p>
+            <p class="filtro-cat" data-cat="vestido" data-i18n="nav-vestido">Vestido</p>
+          </div>
+          <button id="concluirFiltro" data-i18n="filtro-concluir">Concluir</button>
+        </div>
+      </div>
+
+      <!-- ÍCONE CALCULADORA -->
+      <div class="icon-calc" id="abrirCalc">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4"/>
+        </svg>
+      </div>
+
+      <!-- MODAL DA CALCULADORA -->
+      <div id="modalCalc" class="modal-calc hidden">
+        <div class="calc-box">
+          <span id="fecharCalc">&times;</span>
+          <h2 data-i18n="nav-calculadora">📏 Calculadora de Tamanho</h2>
+
+          <!-- ABAS -->
+          <div class="calc-abas">
+            <button class="aba ativa" data-aba="tradicional" data-i18n="aba-calc">🔢 Tradicional</button>
+            <button class="aba" data-aba="medidas" data-i18n="aba-medidas">📐 Medidas</button>
+          </div>
+
+          <!-- ABA 1: TRADICIONAL -->
+          <div id="aba-tradicional" class="aba-conteudo">
+            <div class="calc-tela">
+              <p id="calc-historico"></p>
+              <p id="calc-display">0</p>
+            </div>
+            <div class="calc-botoes">
+              <button class="btn-calc btn-limpar" onclick="calcLimpar()">C</button>
+              <button class="btn-calc btn-limpar" onclick="calcApagarUltimo()">⌫</button>
+              <button class="btn-calc btn-limpar" onclick="calcPorcento()">%</button>
+              <button class="btn-calc btn-op" onclick="calcOp('/')">÷</button>
+              <button class="btn-calc" onclick="calcNum('7')">7</button>
+              <button class="btn-calc" onclick="calcNum('8')">8</button>
+              <button class="btn-calc" onclick="calcNum('9')">9</button>
+              <button class="btn-calc btn-op" onclick="calcOp('*')">×</button>
+              <button class="btn-calc" onclick="calcNum('4')">4</button>
+              <button class="btn-calc" onclick="calcNum('5')">5</button>
+              <button class="btn-calc" onclick="calcNum('6')">6</button>
+              <button class="btn-calc btn-op" onclick="calcOp('-')">−</button>
+              <button class="btn-calc" onclick="calcNum('1')">1</button>
+              <button class="btn-calc" onclick="calcNum('2')">2</button>
+              <button class="btn-calc" onclick="calcNum('3')">3</button>
+              <button class="btn-calc btn-op" onclick="calcOp('+')">+</button>
+              <button class="btn-calc btn-zero" onclick="calcNum('0')">0</button>
+              <button class="btn-calc" onclick="calcNum('.')">.</button>
+              <button class="btn-calc btn-igual" onclick="calcIgual()">=</button>
+            </div>
+          </div>
+
+          <!-- ABA 2: MEDIDAS + ALTURA -->
+          <div id="aba-medidas" class="aba-conteudo hidden">
+            <p data-i18n="med-instrucao">Digite suas informações:</p>
+            <label><span data-i18n="med-busto">Busto (cm):</span> <input type="number" id="med-busto" data-i18n-placeholder="med-busto-placeholder" placeholder="ex: 100"></label>
+            <label><span data-i18n="med-cintura">Cintura (cm):</span> <input type="number" id="med-cintura" data-i18n-placeholder="med-cintura-placeholder" placeholder="ex: 85"></label>
+            <label><span data-i18n="med-quadril">Quadril (cm):</span> <input type="number" id="med-quadril" data-i18n-placeholder="med-quadril-placeholder" placeholder="ex: 110"></label>
+            <label><span data-i18n="med-altura">Altura (cm):</span> <input type="number" id="med-altura" data-i18n-placeholder="med-altura-placeholder" placeholder="ex: 165"></label>
+            <label><span data-i18n="med-peso">Peso (kg):</span> <input type="number" id="med-peso" data-i18n-placeholder="med-peso-placeholder" placeholder="ex: 90"></label>
+            <button id="calcMed" data-i18n="btn-calcular">Calcular</button>
+            <p id="resultadoMed" class="resultado-calc"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="icon-cart">
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+        </svg>
+        <span>0</span>
+      </div>
+
+      <div id="carrinho" class="carrinho hidden">
+        <h2 data-i18n="carrinho-titulo">Seu carrinho</h2>
+        <div id="listaCarrinho"></div>
+        <p id="totalCarrinho" class="total"></p>
+        <div class="botoesCarrinho">
+          <button id="fecharCarrinho" data-i18n="btn-fechar-carrinho">Fechar</button>
+          <button id="comprar" data-i18n="btn-finalizar">Comprar</button>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="menuToggle">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+
+      <ul class="nav-list" id="navList">
+        <li><a href="#" class="menu-filtro" data-cat="camisa"   data-i18n="nav-camisa">Camisa</a></li>
+        <li><a href="#" class="menu-filtro" data-cat="conjunto" data-i18n="nav-conjunto">Conjuntos</a></li>
+        <li><a href="#" class="menu-filtro" data-cat="calca"    data-i18n="nav-calca">Calças</a></li>
+        <li><a href="#" class="menu-filtro" data-cat="vestido"  data-i18n="nav-vestido">Vestidos</a></li>
+        <li><a href="#" class="menu-filtro" data-cat="macacao"  data-i18n="nav-macacao">Macacões</a></li>
+        <li><a href="#historia" data-i18n="nav-maisInformacoes">Mais informações</a></li>
+
+        <p class="lista-login" id="areaLogin">
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 13 16h-2a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 12 21Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+          </svg>
+          <span id="textoLogin">
+            <a href="cadastro.html" data-i18n="login-criar">Criar conta</a> /
+            <a href="senha.html" data-i18n="login-entrar">Iniciar sessão</a>
+          </span>
+        </p>
+      </ul>
+
+      <button id="btnMenu" data-i18n="btn-navegacao">Navegação</button>
+      <div class="navbar">
+        <ul>
+          <li><a href="index.html" class="nav-link ativo" data-i18n="nav-inicio">Inicio</a></li>
+          <li><a href="#roupas" class="nav-link" data-i18n="nav-roupas">Roupas</a></li>
+          <li><a href="#historia" class="nav-link" data-i18n="nav-maisInformacoes">Mais informações</a></li>
+          <li><a href="http://wa.me/5511913296171" class="nav-link" data-i18n="nav-contato">Contato</a></li>
+        </ul>
+        <!-- Bandeiras de idioma -->
+        <div class="seletor-idioma">
+          <button class="btn-idioma ativo" data-lang="pt" onclick="aplicarIdioma('pt')" title="Português">🇧🇷</button>
+          <button class="btn-idioma" data-lang="en" onclick="aplicarIdioma('en')" title="English">🇺🇸</button>
+          <button class="btn-idioma" data-lang="es" onclick="aplicarIdioma('es')" title="Español">🇪🇸</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+    <div id="topoSite">
+     <div class="home-container">
+      <section id="inicio">
+        <div class="content">
+          <h3 data-i18n="home-titulo1">VENHA CONHEÇER</h3>
+          <h3 data-i18n="home-titulo2">A PLUZISTYLE</h3>
+          <p data-i18n="home-desc1">A PluziStyle tem como objetivo entregar a melhor</p>
+          <p><span data-i18n="home-desc2">variedade de modelos de roupas Plus Size e variação de cores e conforto para </span>
+            <p data-i18n="home-desc3">que você consiga ter opções para todas as ocasiões com qualidade</p>
+          </p>
+          <button class="btn" onclick="abrirTelaRoupas()" data-i18n="home-btn-catalogo">Veja o catalogo de roupas completo</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="navegacao card-animado">
+      <div class="parcelamento-1">
+        <svg class="circulo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M6 14h2m3 0h5M3 7v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1Z"/>
+        </svg>
+        <h2 data-i18n="info-parcelamento-titulo">Parcelamento</h2>
+        <p data-i18n="info-parcelamento-desc">Em até 3x sem juros</p>
+      </div>
+
+      <div class="frete-gratis">
+        <svg class="circulo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"/>
+        </svg>
+        <h2 data-i18n="info-frete-titulo">Frete grátis</h2>
+        <p data-i18n="info-frete-desc1">Acima de 299,90</p>
+        <p data-i18n="info-frete-desc2">em todas as regiões</p>
+      </div>
+
+      <div class="brinde">
+        <svg class="circulo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path fill="currentColor" fill-rule="evenodd" d="M17.6647 3.69423c-.0811-.25251-.2591-.46247-.495-.58368-.2359-.12121-.5103-.14375-.7628-.06265l-5.7127 1.83462c-.1263.04057-.2389.10389-.3349.18397C10.2478 5.02354 10.1266 5 10 5H4c-.55228 0-1 .44772-1 1v6c0 1.8638 1.27477 3.4299 3 3.874V19H5c-.55228 0-1 .4477-1 1s.44772 1 1 1h4c.55228 0 1-.4477 1-1s-.44772-1-1-1H8v-3.126c1.72523-.4441 3-2.0102 3-3.874V9.10505l.8825 2.74795c.5699 1.7746 2.2625 2.8759 4.0409 2.7712l.9558 2.9763-.9521.3057c-.5258.1689-.8152.7321-.6463 1.2579.1689.5258.732.8152 1.2579.6463l3.8084-1.2231c.5258-.1688.8152-.732.6463-1.2578-.1688-.5259-.732-.8152-1.2578-.6464l-.9522.3058-.9558-2.9763c1.5068-.9503 2.2417-2.8312 1.6718-4.60574l-1.8347-5.71263ZM9 7v1H5V7h4Zm7.0663-1.74212.3058.9521-3.8085 1.22309-.3057-.95211 3.8084-1.22308Z" clip-rule="evenodd"/>
+        </svg>
+        <h2 data-i18n="info-brinde-titulo">Brinde</h2>
+        <p data-i18n="info-brinde-desc1">com muito carinho</p>
+        <p data-i18n="info-brinde-desc2">para todos</p>
+      </div>
+
+      <div class="contato">
+        <svg class="circulo" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+          <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+        </svg>
+        <h2 data-i18n="info-contato-titulo">Entre em contato</h2>
+        <p><a class="telefone-wats" href="http://wa.me/5511913296171">55 11 91329-6171</a></p>
+      </div>
+    </div>
+
+<section id="manifesto">
+  <div class="manifesto-left reveal">
+    <p class="manifesto-label" data-i18n="manifesto-label">Nossa filosofia</p>
+    <h2 class="manifesto-text">
+      <span data-i18n="manifesto-titulo">Cada peça é um</span> <em data-i18n="manifesto-titulo-em">capítulo</em> <span data-i18n="manifesto-titulo2">da sua existência</span>
+    </h2>
+    <p class="manifesto-body" data-i18n="manifesto-body">
+      Roupa não é apenas tecido. É memória, identidade, presença.
+      Na PluziStyle, cada roupa é pensada para te dar conforto e alegria.
+      Materiais nobres, silhuetas intemporais, alma contemporânea.
+    </p>
+  </div>
+  <div class="manifesto-right">
+    <div class="stat-block reveal reveal-delay-1">
+      <div class="stat-number"><span class="count-up" data-target="100">0</span><span>+</span></div>
+      <div class="stat-label" data-i18n="stat-vendidas">Unidades vendidas</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-2">
+      <div class="stat-number"><span class="count-up" data-target="22">0</span><span>+</span></div>
+      <div class="stat-label" data-i18n="stat-pecas">Peças únicas</div>
+    </div>
+    <div class="stat-block reveal reveal-delay-3">
+      <div class="stat-number"><span class="count-up" data-target="2">0</span><span data-i18n="stat-meses">meses</span></div>
+      <div class="stat-label" data-i18n="stat-mercado">Nosso tempo no mercado</div>
+    </div>
+  </div>
+</section>
+
+<div id="secaoSugestoes" style="display:none;">
+  <h2 id="tituloSugestoes" style="text-align:center;font-family:'Playfair Display',serif;font-size:26px;margin:40px 0 20px;color:#1a1a1a;" data-i18n="sugestoes-titulo"></h2>
+  <div class="card-container reveal" id="cardsSugestoes"></div>
+</div>
+
+     <h1 class="titulo1" data-i18n="home-conheca">Conheça alguns de nossos produtos❤︎</h1>
+    <div class="carrossel-wrapper">
+  <div class="carrossel-container">
+    <button class="carrossel-btn" onclick="mover(-1)">&#8249;</button>
+    <div style="overflow: hidden; width: 720px;">
+      <div class="carrossel-track" id="carrossel-track"></div>
+    </div>
+    <button class="carrossel-btn" onclick="mover(1)">&#8250;</button>
+  </div>
+  <div class="carrossel-dots" id="carrossel-dots"></div>
+</div>
+</div>
+
+  <p id="resultadoBusca" class="resultado-busca"></p>
+  <div id="ultimosVistos" style="display:none;"></div>
+
+  <div id="telaRoupas">
+  <h2 style="text-align:center; margin-bottom:20px;" data-i18n="catalogo-titulo">Catálogo de Roupas</h2>
+  <div class="card-container" id="cardContainerTela"></div>
+</div>
+
+<button id="btnVoltarTela" data-i18n="btn-voltar">← Voltar</button>
+
+      </div>
+      <section id="destaques">
+  <div class="section-header reveal">
+    <h2 class="section-title" data-i18n="destaques-titulo">Mais<br><em>Vendidos</em></h2>
+    <a onclick="abrirTelaRoupas()" class="section-cta" data-i18n="destaques-cta">Ver catálogo completo →</a>
+  </div>
+
+  <div class="card-container2 reveal">
+  <div class="card" data-nome="CAMISA SOCIAL AZUL CLARO">
+    <img class="imagem" src="/img/camisa social azul.png" alt="Camisa social azul">
+    <p data-i18n="cat-camisas">Categoria: Camisas sociais/basicas.</p>
+    <h3>CAMISA SOCIAL AZUL</h3>
+    <p>R$50</p>
+    <button class="btn-ver-produto" data-nome="CAMISA SOCIAL AZUL CLARO" data-i18n="btn-ver-produto">Ver produto</button>
+  </div>
+
+  <div class="card" data-nome="CALÇA ALFAITERIA">
+    <img class="imagem" src="/img/imgcalcarecortada.jfif" alt="Calça alfaiteria">
+    <p data-i18n="cat-calca-alf">Categoria: Calça alfaiteria.</p>
+    <h3 data-i18n="prod-calca">Calça alfaiteria</h3>
+    <p data-i18n="preco-partir">R$ a partir de 120,00</p>
+    <button class="btn-ver-produto" data-nome="CALÇA ALFAITERIA" data-i18n="btn-ver-produto">Ver produto</button>
+  </div>
+
+  <div class="card" data-nome="PEÇA DE FESTA VINHO">
+    <img class="imagem" src="/img/conjunto e festa vinho.png" alt="Peça de festa vinho">
+    <p data-i18n="cat-conjuntos">Categoria: Conjuntos e peças de festa.</p>
+    <h3 data-i18n="prod-festa-vinho">Peça de festa vinho</h3>
+    <p data-i18n="preco-partir">R$ a partir de 120,00</p>
+    <button class="btn-ver-produto" data-nome="PEÇA DE FESTA VINHO" data-i18n="btn-ver-produto">Ver produto</button>
+  </div>
+
+  <div class="card" data-nome="BODY BRANCO">
+    <img class="imagem" src="/img/bodybranco.png" alt="Body branco">
+    <p data-i18n="cat-basicas">Categoria: Roupas basicas.</p>
+    <h3 data-i18n="prod-body-branco">Body branco</h3>
+    <p>R$ 50,00</p>
+    <button class="btn-ver-produto" data-nome="BODY BRANCO" data-i18n="btn-ver-produto">Ver produto</button>
+  </div>
+</div>
+</section>
+
+   <div class="section-header reveal">
+    <h2 class="section-title" data-i18n="lancamentos-titulo">lançamentos</h2>
+   </div>
+  <div class="card-container reveal">
+    <div class="card">
+      <img class="imagem" src="/img/camisa social branca.png" alt="Camisa branca basica">
+      <p data-i18n="prod-camisa-branca">CAMISA BRANCA BASICA</p>
+      <p>R$ 50,00</p>
+      <button class="btn-ver-produto" data-nome="CAMISA BASICA BRANCA" data-i18n="btn-ver-produto">Ver produto</button>
+    </div>
+    <div class="card">
+      <img class="imagem" src="/img/camisa social preta.png" alt="Camisa preta basica">
+      <p data-i18n="prod-camisa-preta">CAMISA BASICA PRETA</p>
+      <p>R$ 50,00</p>
+      <button class="btn-ver-produto" data-nome="CAMISA BASICA PRETA" data-i18n="btn-ver-produto">Ver produto</button>
+    </div>
+    <div class="card">
+      <img class="imagem" src="/img/camisa social vinho.png" alt="Camisa vinho basica">
+      <p data-i18n="prod-camisa-vinho">CAMISA BASICA VINHO</p>
+      <p>R$ 50,00</p>
+      <button class="btn-ver-produto" data-nome="CAMISA BASICA VINHO" data-i18n="btn-ver-produto">Ver produto</button>
+    </div>
+  </div>
+
+    <div id="modalProduto" class="modal">
+    <div class="modal-content">
+      <span id="fecharModal">&times;</span>
+      <div class="modal-body">
+        <div class="modal-left">
+          <img id="modalImg" />
+        </div>
+        <div class="modal-right">
+          <h2 id="modalTitulo"></h2>
+          <p id="modalDesc"></p>
+          <p id="modalValor" class="preco"></p>
+          <p id="modalPix" class="pix"></p>
+          <p id="modalTamanho"></p>
+          <div class="opcoes">
+            <div id="coresModal"></div>
+          </div>
+          <div class="opcoes">
+            <p data-i18n="modal-tamanho">Tamanho:</p>
+            <div class="tamanhos">
+              <span class="tamanho">G</span>
+              <span class="tamanho">G1</span>
+              <span class="tamanho">G3</span>
+              <span class="tamanho">G5</span>
+              <span class="tamanho">G7</span>
+              <span class="tamanho">G9</span>
+              <p id="erroTamanho" class="erro"></p>
+            </div>
+          </div>
+          <div id="modalEstoque"></div>
+          <button class="btn-cart" data-i18n="btn-carrinho">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+    </div>
+    </div>
+      </section>
+  <hr>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="blog-inner">
+    <div class="blog-header">
+      <span class="blog-novidade" data-i18n="blog-eyebrow">NOVIDADES & DICAS</span>
+      <h2 class="blog-ajuda"><span data-i18n="blog-titulo1">Ajudas e</span> <span class="gold" data-i18n="blog-titulo2">explicações</span></h2>
+      <p class="blog-sub" data-i18n="blog-subtitulo">Conteúdo para te ajudar a organizar eventos com mais segurança e profissionalismo.</p>
+    </div>
+
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-img-wrap">
+          <img src="/img/eventos.jpeg" alt="Segurança em eventos"/>
+          <span class="blog-tag" data-i18n="blog1-tag">Como escolher sua roupa na PluziStyle?</span>
+        </div>
+        <div class="blog-body">
+          <p class="blog-meta"><i class="fa-solid fa-user"></i> <span data-i18n="blog-autor">por PluziStyle</span></p>
+          <h3 class="blog-title" data-i18n="blog1-titulo">Como escolher a sua roupa passo a passo com dicas dos criadores e muito mais...</h3>
+          <p class="blog-excerpt" data-i18n="blog1-excerpt">A seguir, nós iremos dar dicas, opções e ideias que você pode gostar e se inspirara para achar o melhor modelo pra você...</p>
+          <a href="#" class="blog-link" data-i18n="blog-ler-mais">Ler mais <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-img-wrap">
+          <img src="/img/eventos2.jpeg" alt="Bombeiro Civil"/>
+          <span class="blog-tag" data-i18n="blog2-tag">Autoestima</span>
+        </div>
+        <div class="blog-body">
+          <p class="blog-meta"><i class="fa-solid fa-user"></i> <span data-i18n="blog-autor">por PluziStyle</span></p>
+          <h3 class="blog-title" data-i18n="blog2-titulo">Por que investir em roupas que te fazem bem é um ato de amor próprio</h3>
+          <p class="blog-excerpt" data-i18n="blog2-excerpt">Vestir-se bem não é frescura — é autocuidado. A forma como nos apresentamos ao mundo reflete diretamente na nossa confiança...</p>
+          <a href="#" class="blog-link" data-i18n="blog-ler-mais">Ler mais <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <article class="blog-card reveal-up">
+        <div class="blog-img-wrap">
+          <img src="/img/contrato.jpeg" alt="Checklist evento"/>
+          <span class="blog-tag" data-i18n="blog3-tag">Guia de compras</span>
+        </div>
+        <div class="blog-body">
+          <p class="blog-meta"><i class="fa-solid fa-user"></i> <span data-i18n="blog-autor">por PluziStyle</span></p>
+          <h3 class="blog-title" data-i18n="blog3-titulo">Guia completo para comprar na PluziStyle online</h3>
+          <p class="blog-excerpt" data-i18n="blog3-excerpt">Aqui tem dicas, orientações e muito mais para você ter um guia completo para comprar na PluziStyle</p>
+          <a href="#" class="blog-link" data-i18n="blog-ler-mais">Ler mais <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+  <div class="reviews-section reveal">
+    <div class="reviews-header">
+      <p class="reviews-eyebrow" data-i18n="reviews-eyebrow">O que dizem nossas clientes</p>
+      <h2 class="reviews-title"><span data-i18n="reviews-titulo1">Amor em</span><br><em data-i18n="reviews-titulo2">cada avaliação</em></h2>
+    </div>
+    <div class="reviews-grid reveal">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text" data-i18n="review1-texto">"Parabéns! O pedido chegou muito bem embalado, juntamente com o brinde. A malha é boa e confortável, e o tamanho veio certinho."</p>
+        <div class="review-author">Mariana</div>
+        <div class="review-date">16/04/2026</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text" data-i18n="review2-texto">"Sem palavras. Tudo muito bom! Pretendo comprar novamente!"</p>
+        <div class="review-author">Ana</div>
+        <div class="review-date">15/03/2026</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text" data-i18n="review3-texto">"Confortável, tamanho certo e chegou no prazo. Parabéns pela qualidade e pelo atendimento!"</p>
+        <div class="review-author">Julia</div>
+        <div class="review-date">24/04/2026</div>
+      </div>
+    </div>
+  </div>
+
+<div class="localizacao card-animado">
+  <h1 data-i18n="localizacao-titulo">Nossa localização:</h1>
+  <hr>
+  <iframe class="localizacao" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.191835514338!2d-46.784309425420545!3d-23.597452062917665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce55441c70fadd%3A0x134c6311f1ed7925!2sLiga%20Solidaria%20-%20Educand%C3%A1rio%20Dom%20Duarte!5e0!3m2!1spt-BR!2sbr!4v1777120049957!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<hr>
+<section id="historia">
+  <footer class="reveal">
+    <div class="tudo">
+      <div class="Departamentos">
+        <h2 data-i18n="footer-departamentos">Departamentos</h2>
+        <p><a href="#" data-i18n="footer-troca">Politica de Troca e devolucões</a></p>
+        <p><a href="#" data-i18n="footer-privacidade">Politica de privacidade</a></p>
+      </div>
+      <div class="sobre nos">
+        <h2 data-i18n="footer-sobre">Sobre nós</h2>
+        <p><a href="/história/história.html" data-i18n="footer-sobre-link">Conheça melhor sobre a PluziStyle</a></p>
+        <p><a href="/guia de tamanho/guia.html" data-i18n="footer-guia">Guia de tamanhos PlusStyle</a></p>
+      </div>
+      <div class="mantenha">
+        <h2 data-i18n="footer-redes">Redes sociais</h2>
+        <div class="container-app">
+          <div class="menu">
+            <div class="toggle">
+              <ion-icon name="share-social"></ion-icon>
+            </div>
+            <li style="--i: 0; --clr: #1877f2">
+              <a href="http://www.instagram.com/pluzistylee?igsh=MWRraTNrZ205eTF3NQ==">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
+                </svg>
+              </a>
+            </li>
+            <li style="--i: 2; --clr: #1b1e21">
+              <a href="http://wa.me/5511913296171">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path fill="currentColor" fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+                  <path fill="currentColor" d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+                </svg>
+              </a>
+            </li>
+            <li style="--i: 4; --clr: #0a66c2">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </li>
+            <li style="--i: 6; --clr: #1b1e21">
+              <a href="#"><i class="fab fa-github"></i></a>
+            </li>
+          </div>
+          <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
+        </div>
+      </div>
+      <div>
+        <h2 data-i18n="footer-contato">Entre em contato</h2>
+        <p><a href="http://wa.me/5511913296171">5511913296171</a></p>
+        <p class="paragrafo1">E-mail: ligasolidariaaa@gmail.com</p>
+        <p class="paragrafo1"><span data-i18n="footer-localizacao-label">localização:</span>
+          <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"/>
+          </svg>
+          <p>Liga solidária</p>
+        </p>
+      </div>
+    </div>
+    <p class="copy" data-i18n="footer-copy">©Copyright</p>
+  </footer>
+</section>
+</div>
+
+<div id="checkout" class="checkout-hidden">
+  <div class="checkout-box">
+
+    <!-- ETAPA 1 -->
+    <div id="etapa1">
+      <h2 class="titulo-pedido" data-i18n="checkout-titulo">Seu pedido</h2>
+      <div class="identificacao-compra">
+        <h3 data-i18n="checkout-produtos">Produtos</h3>
+      </div>
+      <div id="resumoItens"></div>
+      <div class="cupom">
+        <hr>
+        <input type="text" id="cupomInput" data-i18n-placeholder="cupom-placeholder" placeholder="Cupom de desconto">
+        <button id="aplicarCupom" data-i18n="cupom-btn">Aplicar</button>
+        <p id="mensagemCupom"></p>
+      </div>
+      <p id="descontoValor"></p>
+      <p id="totalCheckout"><b data-i18n="total-label">Total: R$ 0,00</b></p>
+      <div class="acoes-compra">
+        <button id="continuarComprando" data-i18n="btn-continuar">Continuar comprando</button>
+        <button id="irParaEntrega" data-i18n="checkout-ir-entrega">Prosseguir para entrega</button>
+      </div>
+    </div>
+
+    <!-- ETAPA 2 -->
+    <div id="etapa2" style="display:none;">
+      <h2 class="entrega-compra" data-i18n="checkout-entrega-titulo">Entrega e pagamento</h2>
+      <div class="container-checkout">
+        <div class="endereco">
+          <input type="text" id="nomeInput" data-i18n-placeholder="checkout-nome" placeholder="Nome completo">
+          <input type="text" id="cpfInput" data-i18n-placeholder="checkout-cpf" placeholder="CPF">
+          <input type="text" id="cepInput" data-i18n-placeholder="cep-placeholder" placeholder="CEP">
+          <input type="text" id="ruaInput" data-i18n-placeholder="checkout-rua" placeholder="Rua">
+          <input type="text" id="numeroInput" data-i18n-placeholder="checkout-numero" placeholder="Número">
+          <input type="text" id="complementoInput" data-i18n-placeholder="checkout-complemento" placeholder="Complemento">
+          <input type="text" id="cidadeInput" data-i18n-placeholder="checkout-cidade" placeholder="Cidade">
+          <input type="text" id="estadoInput" data-i18n-placeholder="checkout-estado" placeholder="Estado">
+        </div>
+        <p id="erroFormulario" style="color: red; display: none;"></p>
+        <p id="freteValor" data-i18n-prefix="frete-label">Frete: R$ 0,00</p>
+        <p id="prazoEntrega" data-i18n-prefix="prazo-label">Prazo: -</p>
+        <div class="pagamento">
+          <select id="formaPagamento">
+            <option data-i18n="pagamento-cartao">Cartão de crédito</option>
+            <option data-i18n="pagamento-pix">Pix</option>
+            <option data-i18n="pagamento-boleto">Boleto</option>
+          </select>
+        </div>
+        <p id="totalFinal"><b data-i18n="total-label">Total: R$ 0,00</b></p>
+        <div class="acoes-compra2">
+          <button id="voltarEtapa" data-i18n="checkout-voltar">Voltar</button>
+          <button id="finalizarCompra" data-i18n="btn-finalizar">Finalizar compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toastCarrinho" class="toast">
+  <span data-i18n="toast-carrinho">Produto adicionado ao carrinho</span>
+  <svg class="icon-animacao" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+  </svg>
+</div>
+<audio id="somCarrinho" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+
+<div id="splash">
+  <!-- FASE 1 -->
+  <div id="splash-fase1">
+    <div id="splash-bg"></div>
+    <div id="splash-texto">
+      <p id="splash-subtitulo" data-i18n="splash-subtitulo">✦ &nbsp; MODA PLUS SIZE &nbsp; ✦</p>
+      <h1 id="splash-titulo" data-i18n="splash-boas-vindas">Bem-vinda à<br>PluziStyle</h1>
+      <div id="splash-scroll-hint">
+        <span data-i18n="splash-scroll">Role para continuar</span>
+        <div class="splash-seta">↓</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 2 -->
+  <div id="splash-fase2">
+    <div id="splash-form-box">
+      <p id="splash-form-subtitulo" data-i18n="splash-form-subtitulo">✦ &nbsp; PERSONALIZAÇÃO &nbsp; ✦</p>
+      <h2 id="splash-form-titulo" data-i18n="splash-titulo">
+        Coloque suas informações para que a gente encontre a melhor roupa para você
+      </h2>
+      <div class="splash-input-group">
+        <label data-i18n="splash-label-busca">O que você procura?</label>
+        <input type="text" id="splash-input-busca" data-i18n-placeholder="splash-placeholder-busca" placeholder="Ex: camisa, calça, vestido...">
+      </div>
+      <div class="splash-input-group">
+        <label data-i18n="splash-label-cor">Qual sua cor de preferência?</label>
+        <input type="text" id="splash-input-cor" data-i18n-placeholder="splash-placeholder-cor" placeholder="Ex: preto, rosa, azul...">
+      </div>
+      <div class="splash-btns">
+        <button id="splash-btn-entrar" data-i18n="splash-btn-entrar">Ver minhas sugestões ✨</button>
+        <button id="splash-btn-pular" data-i18n="splash-btn-pular">Prefiro não dizer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="http://wa.me/5511913296171" target="_blank" id="btnWhatsapp" title="Fale conosco">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 24 24">
+    <path fill-rule="evenodd" d="M12 4a8 8 0 0 0-6.895 12.06l.569.718-.697 2.359 2.32-.648.379.243A8 8 0 1 0 12 4ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.96 9.96 0 0 1-5.016-1.347l-4.948 1.382 1.426-4.829-.006-.007-.033-.055A9.958 9.958 0 0 1 2 12Z" clip-rule="evenodd"/>
+    <path d="M16.735 13.492c-.038-.018-1.497-.736-1.756-.83a1.008 1.008 0 0 0-.34-.075c-.196 0-.362.098-.49.291-.146.217-.587.732-.723.886-.018.02-.042.045-.057.045-.013 0-.239-.093-.307-.123-1.564-.68-2.751-2.313-2.914-2.589-.023-.04-.024-.057-.024-.057.005-.021.058-.074.085-.101.08-.079.166-.182.249-.283l.117-.14c.121-.14.175-.25.237-.375l.033-.066a.68.68 0 0 0-.02-.64c-.034-.069-.65-1.555-.715-1.711-.158-.377-.366-.552-.655-.552-.027 0 0 0-.112.005-.137.005-.883.104-1.213.311-.35.22-.94.924-.94 2.16 0 1.112.705 2.162 1.008 2.561l.041.06c1.161 1.695 2.608 2.951 4.074 3.537 1.412.564 2.081.63 2.461.63.16 0 .288-.013.4-.024l.072-.007c.488-.043 1.56-.599 1.804-1.276.192-.534.243-1.117.115-1.329-.088-.144-.239-.216-.43-.308Z"/>
+  </svg>
+</a>
+
+<!-- VOLTAR AO TOPO -->
+<button id="btnTopo" title="Voltar ao topo" >↑</button>
+
+</body>
+</html>

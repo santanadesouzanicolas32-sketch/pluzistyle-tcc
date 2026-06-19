@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="salvar2.css">
+</head>
+<body>
+     <nav>
+          <ul>
+            <li> <a href="#"> home</a></li>
+            <li> <a href="#"> home2</a></li>
+            <li> <a href="#"> home3</a></li>
+          </ul>
+        </nav>
+        <button class="." onclick="comprar()"> Comprar</button>
+        <h3 class="produto">${e.titulo}</h3> 
+        <img class="produto" src="${e.imagem}" alt="${e.titulo}">
+        <p class="produto">${e.descricao1}</p>
+        <p class="produto">${e.tamanho}</p>
+        <p class="produto"> <b> ${e.descricao2} </b></p>
+        <p class="produto"> ${e.descricao3} </p>
+       <button class="button" onclick="comprar()">  ${e.button} </button>
+       cardeContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("button")) {
+        let produto = event.target.getAttribute("data-produto");
+        alert("Você clicou em: " + produto);
+    }
+});
+<img src= "/img/banner da pluz size.jpg" class="banner">
+document.addEventListener("DOMContentLoaded", function() {
+
+    let form = document.getElementById('form')
+
+    form.addEventListener("submit", function(event){
+        event.preventDefault()
+
+        let email = document.getElementById('email').value
+        let senha = document.getElementById('senha').value
+
+        // salvar
+        localStorage.setItem("email", email)
+        localStorage.setItem("senha", senha)
+
+        // mostrar na tela
+        document.getElementById('resultado').innerHTML =
+            ` Novo login cadastrado com sucesso! Usuário:  ${email} <br>  senha ${senha}`
+            })
+     let form1 = document.getElementById('form')
+form.addEventListener("submit", function(event){ //(submit) dispara quando clica no botão //
+    event.preventDefault()
+    // (evente.preventDefalt) impede de recarregar a página
+    let email = document.getElementById("email").value //(document.getElementById) preoucura especificamente um id
+    let senha = document.getElementById("Senha").value 
+    if( email == email & senha == senha){
+        alert("Acesso liberado")
+    }else{
+        alert("Email ou Senha incorreta, tente novamente")
+    };
+});
+})
+document.addEventListener("DOMContentLoaded", function() {
+
+const form = document.getElementById("form");
+const resultado = document.getElementById("resultado");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+    const usuario = {
+    email: email,
+    senha: senha
+};
+
+localStorage.setItem(email, JSON.stringify(usuario));
+
+    // Verifica se já existe usuário
+    const usuarioSalvo = localStorage.getItem(email);
+
+    if (usuarioSalvo) {
+        resultado.innerHTML = "❌ Usuário já cadastrado!";
+        return;
+    }
+
+    // Salva no localStorage
+    localStorage.setItem(email, senha);
+
+    resultado.innerHTML = "✅ Cadastro realizado com sucesso!";
+    form.reset();
+});
+});
+</body>
+</html>

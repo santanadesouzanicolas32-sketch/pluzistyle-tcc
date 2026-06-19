@@ -1,0 +1,101 @@
+body{
+    background-color: #e8d6d1;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+   align-items: center;
+   font-family: system-ui,  -apple-system, Helvetica, Arial, sans-serif;
+   background: #23232e;
+   height: 8vh;
+}
+.logo{
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #fff;
+}
+
+.mobile-menu{
+    display: none;
+    cursor: pointer;
+}
+.mobile-menu div{
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+}
+nav a{
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+}
+nav a::after{
+    content: " ";
+    width: 0%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+   left: 0;
+}
+nav a:hover::after{
+    width: 100%;
+}
+.produtos{
+    box-shadow: none;
+    width: 940px;
+    margin: 0 auto;
+    padding: 50px 0;
+ 
+     
+}
+.produto:hover{
+    cursor: 
+    pointer;
+box-shadow: 2px 4px 10px -2px #000000;
+}
+.produtos li{
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    vertical-align: top; 
+}
+ .imagem{
+        width: 150px;
+        height: 40vh
+    }
+.produto-preco{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.tamanho{
+margin-top: 3px;
+}
+.button{
+   margin-top: 3px; 
+   border: 1px solid #23232e ;
+   border-radius: 20px;
+    background-color: #00000006;
+     padding: 5px 20px;
+}
+
+.nav-list{
+    list-style: none;
+ display: flex;
+
+}
+.nav-list li{
+   letter-spacing: 3px;
+   margin-left: 32px;
+}
+

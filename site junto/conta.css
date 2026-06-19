@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: p;font-family: "Poppins", sans-serif;
+}
+a{
+    color: white;
+}
+.animar-avaliacao {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1.5s ease;
+}
+
+.animar-avaliacao.ativo {
+  opacity: 1;
+  transform: translateX(0);
+}
+.animar-avaliacao:nth-of-type(1) { transition-delay: 0.1s; }
+.animar-avaliacao:nth-of-type(2) { transition-delay: 0.3s; }
+.animar-avaliacao:nth-of-type(3) { transition-delay: 0.5s; }
+.animar-avaliacao:nth-of-type(4) { transition-delay: 0.7s; }
+header{
+    position: sticky;
+   top: 0;
+   z-index: 1000;
+}
+nav{
+    display: flex;
+   
+   align-items: center;
+   font-family: system-ui,  -apple-system, Helvetica, Arial, sans-serif;
+   background: #23232e;
+   height: 8vh;
+}
+.logo{
+  position: absolute;
+  left: 45%;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #fff;
+}
+
+.mobile-menu{
+    display: none;
+    cursor: pointer;
+}
+.mobile-menu div{
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+}
+nav a{
+    text-decoration: none;
+    position: relative;
+}
+nav a::after{
+    content: " ";
+    width: 0%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+   left: 0;
+    transition: 0.7s;
+}
+nav a:hover::after{
+    width: 100%;
+}
+.nav-list{
+    list-style: none;
+ display: flex;
+
+}
+.nav-list li{
+   letter-spacing: 3px;
+   margin-left: 32px;
+}
+@media (max-width: 999px){
+    .nav-list{
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50vw;
+        height: 92vh;
+        background: #23232e;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%);
+    }
+    .nav-list li{
+        margin-left: 0;
+        opacity: 0;
+    }
+    .mobile-menu{
+        display: block;
+    }
+}
+.nav-list.active{
+transform: translateX(0);
+}
+
+.minha-conta {
+  
+  text-align: center;
+  vertical-align: center;
+font-size: 50px;
+}
+.conta-box {
+  position: relative;
+  min-height: 92vh;
+}
+.conta-box p {
+  margin: 10px 0;
+  color: #333;
+}
+#logout {
+   position: absolute;
+  bottom: 0px;
+  left: 3.5%;
+  transform: translateX(-50%);
+     padding: 10px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #23232e;
+  color: white;
+}
+
+#excluirConta {
+  background: red;
+  color: white;
+}
+.titulo{
+  text-align: center;
+}
+.bloco-compra {
+  background: #f5f5f5;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.item-compra {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 5px 0;
+}

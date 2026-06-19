@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "nome": "VESTIDO ROSA",
+        "preco":"100",
+        "imagem": "/img/imagemcamisa.jpg" 
+    },
+    {
+        "id":2,
+        "nome": "CONJUNTO",
+        "preco":"120,00 - 250,00" ,
+        "imagem": "/img/imagem2.jpeg" 
+    },
+    {
+    "id":3,
+        "nome": "CALÇA ALFAITERIA",
+        "preco":"120,00 - 180,00" ,
+        "imagem": "/img/imagemcalça.jpeg" 
+    }
+]

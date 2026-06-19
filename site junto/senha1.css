@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: p;font-family: "Poppins", sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #e8d6d1;
+    font-family: "Poppins", sans-serif;
+}
+a{
+    color: black;
+}
+/* CONTAINER PRINCIPAL */
+.container{
+    display: flex;
+    width: 800px;
+    height: 500px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* FORMULÁRIO (lado esquerdo) */
+.form-container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    width: 80%;
+    text-align: center;
+}
+.input-box {
+    position: relative;
+    margin: 20px 0;
+}
+/* INPUTS */
+.input-box input{
+     width: 100%;
+    padding: 8px;
+    border: 2px solid #999;
+    border-radius: 20px;
+    outline: none;
+    font-size: 16px;
+}
+.input-box label {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    padding: 0 5px;
+    
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+/* Quando clicar ou tiver texto */
+.input-box input:focus + label,
+.input-box input:valid + label {
+    top: -8px;
+    font-size: 20px;
+    color: #333;
+}
+
+/* BOTÃO */
+.botao{
+    margin-top: 15px;
+    padding: 10px 40px;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(45deg,#e8d6d1 ,black);
+    color: #fff;
+    cursor: pointer;
+}
+
+/* LADO DIREITO (PAINEL ROSA) */
+.overlay-container{
+    width: 50%;
+    background: linear-gradient(45deg, black,#e8d6d1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TEXTO DO PAINEL */
+.overlay-panel{
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+.conta{
+    cursor: pointer;
+    padding: 5px 5px;
+    border-radius: 15px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.botoes button {
+  margin: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+/* 🔻 fixa embaixo da tela */
+.social-bar {
+    
+  position: fixed;
+  bottom: 0px;
+  left: 35%;
+  transform: translateX(-50%);
+
+  display: flex;
+  gap: 15px;
+  list-style: none;
+}
+.paragrafo-itens{
+       margin-top: 12px;
+}
+
+/* 🔥 cada ícone vira referência */
+.icon {
+  position: relative; /* MUITO IMPORTANTE */
+  
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+  cursor: pointer;
+}
+
+.icon i {
+  font-size: 20px;
+  color: #333;
+}
+
+/* 💬 tooltip individual */
+.tooltip {
+  position: absolute;
+
+  bottom: 60px; /* acima do ícone */
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #333;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+
+  font-size: 13px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+/* 🔻 setinha */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+/* 🔥 MOSTRAR SÓ NO ÍCONE CERTO */
+.icon:hover .tooltip {
+  opacity: 1;
+  bottom: 70px;
+}
+/* 🔥 INSTAGRAM */
+.icon.instagram:hover {
+  background: #E1306C;
+}
+
+.icon.instagram:hover i {
+  color: white;
+}
+
+.icon.instagram:hover .tooltip {
+  background: #E1306C;
+}
+
+.icon.instagram:hover .tooltip::after {
+  border-color: #E1306C transparent transparent transparent;
+}
+
+
+/* 🔥 WHATSAPP */
+.icon.whatsapp:hover {
+  background: #25D366;
+}
+
+.icon.whatsapp:hover i {
+  color: white;
+}
+
+.icon.whatsapp:hover .tooltip {
+  background: #25D366;
+}
+
+.icon.whatsapp:hover .tooltip::after {
+  border-color: #25D366 transparent transparent transparent;
+}
