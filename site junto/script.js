@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
   const cursor = document.createElement('div');
   cursor.id = 'custom-cursor';
   cursor.style.cssText = `
@@ -1799,7 +1799,7 @@ function renderizarCoresModal(produto) {
 // PRODUTOS
 let Roupas = [
   {
-    imagem: "/img/imagemshortbasico.png",
+    imagem: "../img/imagemshortbasico.png",
     titulo: "SHORTS LEGGING",
     categoria: "Roupas basicas",
     tamanho: "tam:46-60",
@@ -1810,7 +1810,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 0, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/camisarosa.png",
+    imagem: "../img/camisarosa.png",
     titulo: "CAMISETA ROSA",
     categoria: "Roupas basicas",
     tamanho: "tam:46-60",
@@ -1821,7 +1821,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 8, "G9": 10 }
   },
   {
-    imagem: "/img/bodybranco.png",
+    imagem: "../img/bodybranco.png",
     titulo: "BODY BRANCO",
     categoria: "Roupas basicas",
     tamanho: "tam:46-60",
@@ -1832,7 +1832,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 8, "G9": 10 }
   },
   {
-    imagem: "/img/camisa social azul.png",
+    imagem: "../img/camisa social azul.png",
     titulo: "CAMISA SOCIAL AZUL CLARO",
     categoria: "Camisas sociais/basicas",
     tamanho: "tam:46-60",
@@ -1843,7 +1843,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/camisa social preta.png",
+    imagem: "../img/camisa social preta.png",
     titulo: "CAMISA BASICA PRETA",
     categoria: "Camisas sociais/basicas",
     tamanho: "tam:46-60",
@@ -1854,7 +1854,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/camisa social manga longa preta.png",
+    imagem: "../img/camisa social manga longa preta.png",
     titulo: "CAMISA MANGA LONGA PRETA",
     categoria: "Camisas sociais/basicas",
     tamanho: "tam:46-60",
@@ -1865,7 +1865,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/camisa social azul escuro.png",
+    imagem: "../img/camisa social azul escuro.png",
     titulo: "CAMISA SOCIAL AZUL ESCURO",
     categoria: "Camisas sociais/basicas",
     tamanho: "tam:46-60",
@@ -1876,7 +1876,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/camisa social branca.png",
+    imagem: "../img/camisa social branca.png",
     titulo: "CAMISA BASICA BRANCA",
     categoria: "Camisas sociais/basicas",
     tamanho: "tam:46-60",
@@ -1887,7 +1887,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/camisa social amarela.png",
+    imagem: "../img/camisa social amarela.png",
     titulo: "CAMISA SOCIAL AMARELA",
     categoria: "Camisas sociais/basicas",
     tamanho: "tam:46-60",
@@ -1898,7 +1898,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/camisa social vermelha.png",
+    imagem: "../img/camisa social vermelha.png",
     titulo: "CAMISA SOCIAL VERMLHA",
     categoria: "Camisas sociais/basicas",
     tamanho: "tam:46-60",
@@ -1909,7 +1909,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/camisa social vinho.png",
+    imagem: "../img/camisa social vinho.png",
     titulo: "CAMISA BASICA VINHO",
     categoria: "Camisas sociais/basicas",
     tamanho: "tam:46-60",
@@ -1920,7 +1920,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/imgvestidorecortado.jfif",
+    imagem: "../img/imgvestidorecortado.jfif",
     titulo: "VESTIDO ROSA",
     categoria: "Vestidos",
     tamanho: "tam:46-60",
@@ -1931,7 +1931,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 0, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/vestido roxo.png",
+    imagem: "../img/vestido roxo.png",
     titulo: "VESTIDO ROXO",
     categoria: "Vestidos",
     tamanho: "tam:46-60",
@@ -1942,7 +1942,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 8, "G9": 10 }
   },
   {
-    imagem: "/img/vestido preto.png",
+    imagem: "../img/vestido preto.png",
     titulo: "VESTIDO PRETO",
     categoria: "Vestidos",
     tamanho: "tam:46-60",
@@ -1953,7 +1953,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 8, "G9": 10 }
   },
   {
-    imagem: "/img/imagemnaosei.jfif",
+    imagem: "../img/imagemnaosei.jfif",
     titulo: "CONJUNTO",
     categoria: "Conjuntos e peças de festas",
     tamanho: "tam:46-60",
@@ -1965,7 +1965,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 3, "G1": 0, "G3": 6, "G5": 2, "G7": 4, "G9": 1 }
   },
   {
-    imagem: "/img/conjunto e festa preto.png",
+    imagem: "../img/conjunto e festa preto.png",
     titulo: "PEÇA DE FESTA PRETO",
     categoria: "Conjuntos e peças de festas",
     tamanho: "tam:46-60",
@@ -1977,7 +1977,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 0, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/conjunto e festa vinho.png",
+    imagem: "../img/conjunto e festa vinho.png",
     titulo: "PEÇA DE FESTA VINHO",
     categoria: "Conjuntos e peças de festas",
     tamanho: "tam:46-60",
@@ -1989,7 +1989,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/imgcalcarecortada.jfif",
+    imagem: "../img/imgcalcarecortada.jfif",
     titulo: "CALÇA ALFAITERIA",
     categoria: "Calças",
     tamanho: "tam:46-60",
@@ -2001,7 +2001,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 7, "G1": 3, "G3": 0, "G5": 5, "G7": 2, "G9": 4 }
   },
   {
-    imagem: "/img/calca clara.png",
+    imagem: "../img/calca clara.png",
     titulo: "CALÇA JEANS CLARA",
     categoria: "Calças",
     tamanho: "tam:46-60",
@@ -2012,7 +2012,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/calca canela.png",
+    imagem: "../img/calca canela.png",
     titulo: "CALÇA JEANS ATÉ A CANELA",
     categoria: "Calças",
     tamanho: "tam:46-60",
@@ -2023,7 +2023,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 0, "G5": 8, "G7": 1, "G9": 10 }
   },
   {
-    imagem: "/img/calca escura.png",
+    imagem: "../img/calca escura.png",
     titulo: "CALÇA JEANS ESCURA",
     categoria: "Calças",
     tamanho: "tam:46-60",
@@ -2034,7 +2034,7 @@ let Roupas = [
     estoquePorTamanho: { "G": 5, "G1": 2, "G3": 10, "G5": 8, "G7": 8, "G9": 10 }
   },
   {
-    imagem: "/img/vestidovinho.jfif",
+    imagem: "../img/vestidovinho.jfif",
     titulo: "VESTIDO VINHO",
     categoria: "Conjuntos e peças de festas",
     tamanho: "tam:46-60",
@@ -3314,7 +3314,7 @@ const blogPosts = [
     id: 0,
     tag: "Moda",
     title: "Como escolher a roupa certa para cada ocasião sendo Plus Size",
-    img: "/img/eventos.jpeg",
+    img: "../img/imagem pluzistyle.jpeg",
     readTime: "5 min de leitura",
     content: `
       <h3>Moda Plus Size para cada momento da sua vida</h3>
@@ -3341,7 +3341,7 @@ const blogPosts = [
     id: 1,
     tag: "Autoestima",
     title: "Por que investir em roupas que te fazem bem é um ato de amor próprio",
-    img: "/img/eventos2.jpeg",
+    img: "../img/imagem1.jpeg",
     readTime: "7 min de leitura",
     content: `
       <h3>A roupa que você veste faz parte de quem você é</h3>
@@ -3360,7 +3360,7 @@ const blogPosts = [
     id: 2,
     tag: "Guia de Compras",
     title: "Guia completo para comprar roupas Plus Size online com segurança",
-    img: "/img/contrato.jpeg",
+    img: "../img/imagem2.jpeg",
     readTime: "10 min de leitura",
     content: `
       <h3>Antes de comprar — conheça o seu corpo</h3>
