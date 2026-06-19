@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="salvar2.css">
+</head>
+<body>
+     <nav>
+          <ul>
+            <li> <a href="#"> home</a></li>
+            <li> <a href="#"> home2</a></li>
+            <li> <a href="#"> home3</a></li>
+          </ul>
+        </nav>
+        <button class="." onclick="comprar()"> Comprar</button>
+        <h3 class="produto">${e.titulo}</h3> 
+        <img class="produto" src="${e.imagem}" alt="${e.titulo}">
+        <p class="produto">${e.descricao1}</p>
+        <p class="produto">${e.tamanho}</p>
+        <p class="produto"> <b> ${e.descricao2} </b></p>
+        <p class="produto"> ${e.descricao3} </p>
+       <button class="button" onclick="comprar()">  ${e.button} </button>
+       cardeContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("button")) {
+        let produto = event.target.getAttribute("data-produto");
+        alert("Você clicou em: " + produto);
+    }
+});
+<img src= "/img/banner da pluz size.jpg" class="banner">
+document.addEventListener("DOMContentLoaded", function() {
+
+    let form = document.getElementById('form')
+
+    form.addEventListener("submit", function(event){
+        event.preventDefault()
+
+        let email = document.getElementById('email').value
+        let senha = document.getElementById('senha').value
+
+        // salvar
+        localStorage.setItem("email", email)
+        localStorage.setItem("senha", senha)
+
+        // mostrar na tela
+        document.getElementById('resultado').innerHTML =
+            ` Novo login cadastrado com sucesso! Usuário:  ${email} <br>  senha ${senha}`
+            })
+     let form1 = document.getElementById('form')
+form.addEventListener("submit", function(event){ //(submit) dispara quando clica no botão //
+    event.preventDefault()
+    // (evente.preventDefalt) impede de recarregar a página
+    let email = document.getElementById("email").value //(document.getElementById) preoucura especificamente um id
+    let senha = document.getElementById("Senha").value 
+    if( email == email & senha == senha){
+        alert("Acesso liberado")
+    }else{
+        alert("Email ou Senha incorreta, tente novamente")
+    };
+});
+})
+document.addEventListener("DOMContentLoaded", function() {
+
+const form = document.getElementById("form");
+const resultado = document.getElementById("resultado");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+    const usuario = {
+    email: email,
+    senha: senha
+};
+
+localStorage.setItem(email, JSON.stringify(usuario));
+
+    // Verifica se já existe usuário
+    const usuarioSalvo = localStorage.getItem(email);
+
+    if (usuarioSalvo) {
+        resultado.innerHTML = "❌ Usuário já cadastrado!";
+        return;
+    }
+
+    // Salva no localStorage
+    localStorage.setItem(email, senha);
+
+    resultado.innerHTML = "✅ Cadastro realizado com sucesso!";
+    form.reset();
+});
+}); 
+
+
+ <svg id="iconeFiltro"  aria-hidden="true"
+  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+    d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z"/>
+  </svg>
+  <div id="filtroBox" class="filtro-hidden">
+    <button id="limparFiltros">Limpar filtros</button>
+  <div class="preco-filtro">
+    <p id="filtroAtivo"></p>
+    <h3>Preço</h3>
+    <p class="filtro-preco" data-preco="120-250">120 - 250</p>
+    <p class="filtro-preco" data-preco="120-180">120 - 180</p>
+    <p class="filtro-preco" data-preco="180-250">180 - 250</p>
+  </div>
+  <div class="categoria">
+    <h3>Categoria</h3>
+    <p class="filtro-cat" data-cat="todos">Todos os produtos</p>
+    <p class="filtro-cat" data-cat="camisa">Camisa</p>
+    <p class="filtro-cat" data-cat="calca">Calça</p>
+    <p class="filtro-cat" data-cat="conjunto">Conjunto</p>
+    <p class="filtro-cat" data-cat="macacao">Macacão</p>
+    <p class="filtro-cat" data-cat="vestido">Vestido</p>
+  </div>
+  <button id="concluirFiltro">Concluir</button>
+  </div>
+</body>
+</html>

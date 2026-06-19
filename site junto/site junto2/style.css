@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body{
+    background-color: #e8d6d1;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+a{
+     color: #fff;
+     text-decoration: none;
+     transition: 0.3s;
+}
+a:hover{
+opacity: 0.7;
+}
+header{
+    position: sticky;
+   top: 0;
+   z-index: 1000;
+}
+nav{
+    display: flex;
+    
+   align-items: center;
+   font-family: system-ui,  -apple-system, Helvetica, Arial, sans-serif;
+   background: #23232e;
+   height: 8vh;
+}
+.logo{
+
+    margin-left: 550px;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #fff;
+}
+
+.mobile-menu{
+   
+    cursor: pointer;
+}
+.mobile-menu div{
+    width: 32px;
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+/* Ícone no canto direito */
+.mobile-menu {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+}
+
+/* Linhas do hambúrguer */
+.mobile-menu div {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  margin: 6px;
+  transition: 0.3s;
+}
+
+/* Menu escondido */
+.nav-list {
+    display: none;
+ position: absolute;
+ left: 0px;
+        top: 8vh;
+        right: 0;
+        width: 25vw;
+        height: 92vh;
+        background: #23232e;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+}
+.linha{
+color: #fff;
+}
+.lista-login{
+  position: absolute;
+  top: 1;
+  bottom: 0;
+  border: #fff;
+  letter-spacing: 3px;
+}
+/* Estado inicial (links escondidos e fora da tela) */
+.nav-list li {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+/* ENTRADA */
+.nav-list.active li {
+  animation: slideIn 0.5s forwards;
+}
+
+/* 👇 COLOCA AQUI (logo abaixo) */
+.nav-list.closing li {
+  animation: slideIn 0.5s forwards;
+  animation-direction: reverse;
+}
+
+/* 👇 ESSENCIAL: manter visível durante closing */
+.nav-list.closing {
+  pointer-events: none;
+}
+
+/* Animação */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Delay na entrada */
+.nav-list.active li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.nav-list.active li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.nav-list.active li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.nav-list.active li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Delay na saída (opcional: invertido fica mais bonito) */
+.nav-list.closing li:nth-child(1) {
+  animation-delay: 0.4s;
+}
+.nav-list.closing li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.nav-list.closing li:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.nav-list.closing li:nth-child(4) {
+  animation-delay: 0.1s;
+}
+nav a{
+    text-decoration: none;
+    position: relative;
+}
+nav a::after{
+    content: " ";
+    width: 0%;
+    height: 1px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+   left: 0;
+    transition: 0.7s;
+}
+nav a:hover::after{
+    width: 100%;
+}
+/* Mostrar menu */
+.nav-list.active {
+  display: flex;
+}
+
+/* ANIMAÇÃO DO X */
+.mobile-menu.active .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu.active .line2 {
+  opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+@media (max-width: 999px){
+    .nav-list{
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50vw;
+        height: 92vh;
+        background: #23232e;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+@keyframes animacao {
+  from {
+    top: 10px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1; /* 👈 era 2 (inválido) */
+  }
+}
+
+/* ABRIR */
+.menu.abrindo {
+  display: block;
+  animation: animacao 0.3s forwards;
+}
+
+/* FECHAR */
+.menu.fechando {
+  animation: animacao 0.3s reverse forwards;
+}
+
+#textoLogin {
+  position: relative; /* NECESSÁRIO pro top funcionar */
+  animation: animacao 0.5s ease-in-out 1;
+}
+.botao-conta{
+
+     margin-top: 3px;
+     background-color: #00000006;
+   border: 1px solid #23232e;
+   border-radius: 20px;
+     padding: 5px 20px;
+     cursor: pointer;
+}
+
+
+svg{
+  width: 30px;
+}
+header .icon-cart{
+  margin-left: 490px;
+  position: relative;
+   
+}
+header .icon-cart span{
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  margin-right: 15px;
+  top: 50%;
+  right: -20px;
+}
+.carrinho{
+  width: 400px;
+  background-color: #000000;
+  color: white;
+  position: fixed;
+top:48px;
+  right: 0;
+  bottom: 0;
+transition: 0.5s;
+overflow-y: auto;
+  z-index: 999;
+  display: grid;
+  grid-template-rows: 70px 1fr 70px;
+transform: translateX(100%);
+  opacity: 0;
+
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.carrinho.ativo {
+  transform: translateX(0);
+  opacity: 1;
+}
+.carrinho h2{
+  margin-top: 3px;
+  font-family:'Roboto', sans-serif;
+  text-align: center;
+}
+#fecharCarrinho{
+  font-size: 22px;
+  padding: 0 10px;
+  margin-left: 10px;
+border:  white;
+}
+#comprar{
+  font-size: 22px;
+border: #fff;
+}
+
+
+.item-carrinho {
+display: grid;
+grid-template-columns: 70px 150px 50px 1fr;
+  padding: 10px 0;
+  text-align: center;
+  align-items: center;
+  gap: 10px   ;
+  margin-top: 10px;
+}
+
+.item-carrinho img {
+  width: 80px;
+}
+
+.contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+.diminuir{
+  border-radius: 40%;
+}
+.aumentar{
+  border-radius: 50%;
+}
+.remover{
+  display: flex;
+margin-left: 180px;
+  background-color: #000000;
+  color: white;
+  border: 1px white;
+  cursor: pointer;
+}
+.total {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.botoesCarrinho {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #fff;
+  padding: 20px 0;
+
+}
+.banner{
+     margin-top: 20px;
+    width: 50%;
+    height: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.titulo{
+    margin-top: 20px;
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+}
+.paragrafo{
+
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}
+.lista{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.lista li{
+display: inline;
+margin: 0 0 0 15px
+}
+.lista a{
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+}
+.titulo2{
+    text-align: center;
+    font-size: 40px;
+}
+.search{
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc ;
+    background-color:#fff;
+    width: 400px;
+    margin: 20px auto;
+    border-radius: 20px;
+    padding: 5px 20px;
+    color: #4b4b4b;
+}
+#searchInput{
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+
+}
+.ativo {
+  background: #000;
+  color: #fff;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+
+#iconeFiltro{
+cursor: pointer;
+}
+#concluirFiltro {
+  margin-top: 10px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+#filtroBox {
+  position: absolute;
+  top: 620px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 50vh;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+.filtro-hidden {
+  display: none;
+}
+
+#filtroBox p {
+  cursor: pointer;
+  margin: 5px 0;
+}
+.search label{
+    height: 20px;
+    
+}
+.h2{
+    text-align: center;
+}
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+     .imagem{
+      border-radius: 10px;
+        width: 100%;
+        height: 55vh;
+    }
+    
+}
+
+
+
+.card{
+    text-align: center;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: none;
+    margin: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 0 8px rgba(0, 0, 0,0.1);
+    
+}
+.button{
+         margin-top: 3px;
+     background-color: #23232e;
+     color: #fff;
+   border: 1px solid #23232e;
+   border-radius: 20px;
+     padding: 5px 20px;
+     cursor: pointer;
+}
+.card:hover{
+box-shadow: 2px 4px 10px -2px #000000;
+}
+.titulo1{
+text-align: center;
+}
+.produton{
+    margin-top: 30px;
+}
+.roupas{
+    width: 940px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+.roupas li{
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    vertical-align: top;
+    margin: 0 1.5%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border: solid 2px #000000;
+    border-radius: 10px;
+
+}
+.roupas li:hover{
+    border-color: blue;
+}
+.roupas li:active{
+    border-color: #088c19;
+}
+
+.roupas h2{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.roupas li:hover h2{
+    font-size: 34px;
+}
+.tamanho{
+margin-top: 20px;
+}
+.valor1{
+    font-size: 20px;
+}
+.descricao{
+    font-size: 18px;
+}
+.valor{
+        margin-top: 10px;
+    font-size: 22px;
+    font-weight: bold;
+
+}
+.tudo{
+    display: flex;
+   justify-content: space-around;
+}
+
+.menu {
+  margin-top: 0px ; /* empurra pra baixo */
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 280px;
+  height: 150px;
+
+  display: flex;
+ 
+
+}
+
+.menu .toggle {
+position: absolute;
+height: 60px;
+width: 60px;
+background: #fff;
+border-radius: 50%;
+box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+display: flex;
+align-items: center;
+justify-content: center;
+color: #333;
+font-size: 2rem;
+cursor: pointer;
+transition: 1.25s;
+z-index: 5;
+}
+.menu.active .toggle {
+transform: rotate(360deg);
+box-shadow:
+0 6px 8px rgba(0, 0, 0, 0.15),
+0 0 0 2px #333,
+0 0 0 8px #fff;
+}
+.menu li {
+position: absolute;
+right: 53%; 
+list-style: none;
+transition: 0.5s;
+transform: rotate(calc(360deg / 8 * var(--i)));
+transform-origin: 140px;
+scale: 0;
+transition-delay: calc(0.05s * var(--i));
+}
+.menu.active li {
+scale: 1;
+}
+.menu li a {
+position: relative;
+display: flex;
+transform: rotate(calc(360deg / -8 * var(--i)));
+width: 60px;
+height: 60px;
+background-color: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+font-size: 1.75rem;
+color: var(--clr);
+box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+transition: 0.5s;
+text-decoration: none;
+}
+.menu li:hover a {
+font-size: 2.5rem;
+box-shadow:
+0 0 0 2px var(--clr),
+0 0 0 6px #fff;
+}
+.paragrafo1{
+    color: #fff;
+}
+.copy{
+    text-align: center;
+}

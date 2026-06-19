@@ -1,0 +1,45 @@
+
+.titulo{
+text-align: center;
+}
+.roupas{
+    width: 940px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+.roupas li{
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+    vertical-align: top;
+    margin: 0 1.5%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border: solid 2px #000000;
+    border-radius: 10px;
+
+}
+.roupas li:hover{
+    border-color: blue;
+}
+.roupas li:active{
+    border-color: #088c19;
+}
+
+.roupas h2{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.roupas li:hover h2{
+    font-size: 34px;
+}
+.descricao{
+    font-size: 18px;
+}
+.valor{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}

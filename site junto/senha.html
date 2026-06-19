@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login na PluziStyle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="senha1.css">
+    <script src="login.js" defer></script>
+</head>
+
+<body>
+    <div class="container" id="container">
+
+        <!-- FORMULÁRIO -->
+        <div class="form-container">
+            <form id="form">
+                <h1>Login site PluziStyle</h1>
+
+                <div class="input-box">
+    <input id="nome" type="text" placeholder="Digite seu nome" required>
+   
+</div>
+
+<div class="input-box">
+    <input id="email" type="email" placeholder="Digite seu email" required>
+   
+</div>
+
+<div class="input-box">
+    <input id="senha" type="password" placeholder="Digite sua senha" required>
+    
+</div>
+                <div class="relembrar">
+                    
+                     <p>Não tem uma conta? <a href="cadastro.html">Cadastra-se</a></p>
+                </div>
+
+                <button class="botao" type="submit">Login</button>
+
+                <div class="registro">
+                   
+                    <p><a href="index.html">Continuar sem login</a></p>
+                    <button type="button" class="conta" onclick="excluirContaLogada(event)">Excluir minha conta</button>
+                </div>
+                <div id="resultado"></div>
+            </form>
+            
+        </div>
+<div id="modalConfirmacao" class="modal">
+  <div class="modal-box">
+
+    <h2>Tem certeza?</h2>
+
+    <!-- 🔥 INPUT AGORA EM CIMA -->
+    <p>Digite o email que você quer excluir:</p>
+    <input type="email" id="emailExcluir" placeholder="Seu email">
+    <p>Digite a senha da conta:</p>
+    <input type="password" id="senhExcluir" placeholder="senha">
+
+    <p>Essa ação não pode ser desfeita.</p>
+
+    <div class="botoes">
+      <button type="button" onclick="confirmarExclusao()">Sim, excluir</button>
+      <button type="button" onclick="fecharModal()">Cancelar</button>
+    </div>
+
+    <!-- 🔥 RESULTADO AGORA DENTRO DO MODAL -->
+    <div id="resultado-excluir"></div>
+
+  </div>
+</div>
+        <!-- PAINEL LATERAL (igual imagem 2) -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel right">
+                    <h1>Olá!</h1>
+                    <p>Coloque seus dados para navegar na PluziStyle</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+   <ul class="social-bar">
+    <li><p class="paragrafo-itens">Nossas redes sociais:</p></li>
+    <li class="icon instagram">
+  <a href="http://www.instagram.com/pluzistylee?igsh=MWRraTNrZ205eTF3NQ=="><span  class="tooltip">Instagram</span>
+    <i class="fab fa-instagram"></i>
+  </li>
+  <li class="icon whatsapp">
+   <a href="http://wa.me/5511913296171"> <span class="tooltip">whatsapp</span>
+    <i class="fab fa-whatsapp"></i>
+  </li>
+
+  
+  </li>
+
+</ul>
+</body>
+
+</html>
