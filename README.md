@@ -26,21 +26,20 @@
 ## 📁 Estrutura
 
 ```
-├── .vscode
-├── .vscode/.vscode
-├── .vscode/contato
-├── .vscode/guia de tamanho
-├── .vscode/história
-├── .vscode/img
-├── .vscode/launch.json
-├── .vscode/pagina inicial
-├── .vscode/reset.css
-├── .vscode/roupas
-├── .vscode/salvar.css
-├── .vscode/salvar.html
-├── .vscode/salvar2.css
-├── .vscode/salvar2.html
-├── .vscode/senha
+├── contato/
+├── guia de tamanho/
+├── história/
+├── img/
+├── index.html
+├── pagina inicial/
+├── reset.css
+├── roupas/
+├── salvar.css
+├── salvar.html
+├── salvar2.css
+├── salvar2.html
+├── senha/
+├── site junto/
 ```
 
 ## 🚀 Como rodar localmente
